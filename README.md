@@ -6,7 +6,7 @@ http://my100.mopy.info:9999/dice?nod=2&nob=6&times=1
 ```
 #### リクエストラインのご説明
 - URI
-    - http://my100.mopy.info:9999/dice?
+    - http://my100.mopy.info:9999/dice
 - nod
     - Number of Dice: サイコロの数を指定する
         - 1 から 1024 を指定可能
@@ -48,7 +48,7 @@ http://my100.mopy.info:9999/deme?flnm=deme20180108_091722_392147_975770
 ```
 #### リクエストラインのご説明
 - URI
-    - http://my100.mopy.info:9999/deme?
+    - http://my100.mopy.info:9999/deme
 - flnm
     - 取得したい全出目結果リストのファイル名
 ### レスポンス例

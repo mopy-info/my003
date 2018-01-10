@@ -3,10 +3,9 @@ import os
 import configparser
 import logging
 import random
-from collections import OrderedDict
 import datetime
 import numpy as np
-from flask import Flask, request, Response
+from flask import Flask, request, Response, jsonify
 
 
 def is_digit_or_float(s):
@@ -116,7 +115,8 @@ def dice():
                 max = sttl
             time_cnt += 1
 
-    result = OrderedDict(rtncd=str(rtncd))
+    result = {}
+    result['rtncd'] = str(rtncd)
 
     if rtncd == 0:
         result['ttl'] = str(ttl)
@@ -128,19 +128,7 @@ def dice():
         np.savetxt("deme/" + demeflnm, deme, fmt='%d', delimiter=',')
         result['deme'] = demeflnm
 
-    rtntxt = '{'
-    for i in result:
-        if len(rtntxt) == 1:
-            pass
-        else:
-            rtntxt = rtntxt + ','
-        if is_digit_or_float(result[i]):
-            rtntxt = rtntxt + ' "' + i + '": ' + result[i]
-        else:
-            rtntxt = rtntxt + ' "' + i + '": "' + result[i] + '"'
-    rtntxt = rtntxt + ' }'
-
-    return rtntxt
+    return jsonify({'results': result})
 
 
 @app.route('/deme')
